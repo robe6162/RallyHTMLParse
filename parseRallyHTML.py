@@ -657,7 +657,7 @@ def parse_cli_args():
 
     # -------------------------------
 
-    formatting = parser.add_argument_group('Report Formats')
+    formatting = parser.add_argument_group('REPORT FORMATS')
     formatting.add_argument('-s', '--summary', action='store_true',
                             help='Only generate report from overall '
                                  'test result.')
@@ -668,7 +668,7 @@ def parse_cli_args():
 
     # -------------------------------
 
-    files = parser.add_argument_group('Output Files')
+    files = parser.add_argument_group('OUTPUT FILES')
 
     files.add_argument('-o', '--output', default=None,
                        help='Name of output file')
@@ -678,7 +678,7 @@ def parse_cli_args():
 
     # -------------------------------
 
-    debugging = parser.add_argument_group('Debugging')
+    debugging = parser.add_argument_group('DEBUGGING')
     debugging.add_argument('-d', '--debug', action='store_true',
                            help='Set DEBUG flag to True.')
 
