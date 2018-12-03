@@ -547,9 +547,9 @@ class RallYReportOutput(object):
         :return: String representation of the generated wiki shorthand
 
         """
-        data_sets = [self.data.results_summary()]
+        data_sets = [self.data.results_summary]
 
-        if not append and os.path.exists(filename):
+        if not append and filename is not None and os.path.exists(filename):
             os.remove(filename)
 
         if not summary_only:
@@ -597,7 +597,7 @@ class RallYReportOutput(object):
             for action in sorted(data[test_name].keys()):
                 stats = data[test_name][action]
 
-                data_row = [self.data.id_(), test_name, action]
+                data_row = [self.data.id_, test_name, action]
                 for datum in RallyReportConsts.TABLE_ORDER:
                     value = stats[datum]
 
@@ -633,7 +633,7 @@ class RallYReportOutput(object):
         :return: String representation of JSON formatted data
         """
 
-        if not append and os.path.exists(filename):
+        if not append and filename is not None and os.path.exists(filename):
             os.remove(filename)
 
         # Write data to JSON file
