@@ -657,7 +657,7 @@ def parse_cli_args():
 
     # -------------------------------
 
-    formatting = parser.add_argument_group('Output Formats')
+    formatting = parser.add_argument_group('Report Formats')
     formatting.add_argument('-s', '--summary', action='store_true',
                             help='Only generate report from overall '
                                  'test result.')
