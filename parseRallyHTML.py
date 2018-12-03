@@ -9,8 +9,14 @@ import operator
 import pprint
 import os
 import re
+import sys
 
 import prettytable
+
+
+PY_VERSION = sys.version_info.major
+if PY_VERSION > 2:
+    from functools import reduce
 
 
 DEFAULT_LOG_FILE = "rally_html_parse.log"
@@ -282,9 +288,14 @@ class ParseRallyResults(object):
 
                 for metric in table[name][action].keys():
 
-                    # Strip out unicode
-                    value_list = [x for x in table[name][action][metric] if
-                                  not isinstance(x, unicode)]
+                    # Strip out unicode (how is dependent on Python Version)
+                    # In V3, 'unicode' has been rolled up into 'str'
+                    if PY_VERSION == 3:
+                        value_list = [x for x in table[name][action][metric] if
+                                      not isinstance(x, str)]
+                    else:
+                        value_list = [x for x in table[name][action][metric] if
+                                      not isinstance(x, unicode)]
 
                     log.debug(
                         "LIST OF KNOWN VALUES for METRIC '{0}': {1}".format(
@@ -707,7 +718,7 @@ if __name__ == '__main__':
             ', '.join(["'{0}'".format(x) for x in requires_outfile])))
 
         log.error(msg)
-        print msg
+        print(msg)
 
         exit(-1)
 
@@ -726,4 +737,4 @@ if __name__ == '__main__':
         summary_only=args.summary)
 
     log.info("\n{0}".format(data_table))
-    print data_table
+    print(data_table)
