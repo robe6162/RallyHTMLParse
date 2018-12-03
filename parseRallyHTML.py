@@ -363,7 +363,7 @@ class ParseRallyResults(object):
         return summary
 
 
-class RallYReportOutput(object):
+class RallyReportOutput(object):
     """
     Used to create the various output formats
     """
@@ -739,12 +739,12 @@ if __name__ == '__main__':
         log.info("Targeting Specific Test: {test}".format(test=args.target))
 
     # Parse results
-    RallyResults = ParseRallyResults(
+    rally_results = ParseRallyResults(
         rally_html_file=args.input, id_=args.id, summary_only=args.summary,
         target=args.target, debug=args.debug)
 
     # Generate Output
-    results_table = RallYReportOutput(RallyResults)
+    results_table = RallyReportOutput(rally_results)
     data_table = results_table.build_table(
         table_type=args.format, filename=args.output, append=args.append,
         summary_only=args.summary)
