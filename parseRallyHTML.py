@@ -13,7 +13,8 @@ import sys
 
 import prettytable
 
-
+# In python 2, reduce is a native call, but in Python3, it has been incorporated
+# into functools.
 PY_VERSION = sys.version_info.major
 if PY_VERSION > 2:
     from functools import reduce
@@ -290,12 +291,12 @@ class ParseRallyResults(object):
 
                     # Strip out unicode (how is dependent on Python Version)
                     # In V3, 'unicode' has been rolled up into 'str'
-                    if PY_VERSION == 3:
-                        value_list = [x for x in table[name][action][metric] if
-                                      not isinstance(x, str)]
-                    else:
+                    if PY_VERSION == 2:
                         value_list = [x for x in table[name][action][metric] if
                                       not isinstance(x, unicode)]
+                    else:
+                        value_list = [x for x in table[name][action][metric] if
+                                      not isinstance(x, str)]
 
                     log.debug(
                         "LIST OF KNOWN VALUES for METRIC '{0}': {1}".format(
