@@ -663,8 +663,9 @@ def parse_cli_args():
                                  'test result.')
 
     formatting.add_argument('-f', '--format', default=TableConfig.PRETTY,
-                            help='Output formats: ({0})'.format(
-                                ', '.join(TableConfig.TYPES)))
+                            help='Output formats: ({0}). DEFAULT: {1}'.format(
+                                ', '.join(TableConfig.TYPES),
+                                TableConfig.PRETTY))
 
     # -------------------------------
 
