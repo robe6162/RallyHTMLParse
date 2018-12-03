@@ -24,6 +24,9 @@ DEFAULT_LOG_FILE = "rally_html_parse.log"
 
 
 class TableConfig(object):
+    """
+    Constants for use when defining output reports.
+    """
     CSV = 'csv'
     PRETTY = 'prettytable'
     WIKI = 'wiki'
@@ -34,6 +37,10 @@ class TableConfig(object):
 
 
 class RallyReportConsts(object):
+    """
+    Constants used when parsing Rally HTML files and defining the corresponding
+    data structures.
+    """
     FULL_DUR = 'full_duration'
     LOAD_DUR = 'load_duration'
     TABLE = 'table'
