@@ -669,10 +669,11 @@ def parse_cli_args():
                             help='Only generate report from overall '
                                  'test result.')
 
-    formatting.add_argument('-f', '--format', default=TableConfig.PRETTY,
-                            help='Output formats: ({0}). DEFAULT: {1}'.format(
-                                ', '.join(TableConfig.TYPES),
-                                TableConfig.PRETTY))
+    formatting.add_argument(
+        '-f', '--format', default=TableConfig.PRETTY,
+        help='Output formats: ({formats}). DEFAULT: '
+             '{default}'.format(formats=', '.join(TableConfig.TYPES),
+                                default=TableConfig.PRETTY))
 
     # -------------------------------
 
