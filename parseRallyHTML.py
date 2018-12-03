@@ -685,7 +685,6 @@ def parse_cli_args():
     # OUTPUT FILE OPTIONS
 
     files = parser.add_argument_group('OUTPUT FILES')
-
     files.add_argument(
         '-o', '--output', default=None, help='Name of output file')
 
