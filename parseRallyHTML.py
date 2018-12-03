@@ -709,6 +709,10 @@ if __name__ == '__main__':
     if args.debug:
         log.setLevel(logging.DEBUG)
         log.debug("DEBUG is enabled.")
+        border = "+{0}+".format("=" * 140)
+        msg = ("\n{border}\n| NOTE: Debugging is being logged to: {file} "
+               "\n{border}\n")
+        print(msg.format(file=os.path.abspath(args.logfile), border=border))
 
     # Check for interdependent args; if reqs not met, error out.
     requires_outfile = [TableConfig.CSV, TableConfig.JSON]
