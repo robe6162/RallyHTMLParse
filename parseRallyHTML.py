@@ -658,16 +658,22 @@ def parse_cli_args():
     @return: ArgParser argument object
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('input', help='Name of input Rally Results HTML file.')
-    parser.add_argument('id', help='Identifier for test data. e.g. - run id '
-                                   'or date.')
 
     # -------------------------------
+    # POSITIONAL (Required arguments)
+
+    parser.add_argument(
+        'input', help='Name of input Rally Results HTML file.')
+    parser.add_argument(
+        'id', help='Identifier for test data. e.g. - run id or date.')
+
+    # -------------------------------
+    # REPORT (OUTPUT) FORMATS
 
     formatting = parser.add_argument_group('REPORT FORMATS')
-    formatting.add_argument('-s', '--summary', action='store_true',
-                            help='Only generate report from overall '
-                                 'test result.')
+    formatting.add_argument(
+        '-s', '--summary', action='store_true',
+        help='Only generate report from overall test result.')
 
     formatting.add_argument(
         '-f', '--format', default=TableConfig.PRETTY,
@@ -676,28 +682,31 @@ def parse_cli_args():
                                 default=TableConfig.PRETTY))
 
     # -------------------------------
+    # OUTPUT FILE OPTIONS
 
     files = parser.add_argument_group('OUTPUT FILES')
 
-    files.add_argument('-o', '--output', default=None,
-                       help='Name of output file')
+    files.add_argument(
+        '-o', '--output', default=None, help='Name of output file')
 
-    files.add_argument('-a', '--append', action='store_true',
-                       help='Append output to existing file.')
+    files.add_argument(
+        '-a', '--append', action='store_true',
+        help='Append output to existing file.')
 
     # -------------------------------
+    # DEBUGGING OPTIONS
 
     debugging = parser.add_argument_group('DEBUGGING')
-    debugging.add_argument('-d', '--debug', action='store_true',
-                           help='Set DEBUG flag to True.')
+    debugging.add_argument(
+        '-d', '--debug', action='store_true', help='Set DEBUG flag to True.')
 
-    debugging.add_argument('-t', '--target', default=None,
-                           help='List data for specific TARGET test.')
+    debugging.add_argument(
+        '-t', '--target', default=None,
+        help='List data for specific TARGET test.')
 
-    debugging.add_argument('-l', '--logfile', default=DEFAULT_LOG_FILE,
-                           help='Name of log file. DEFAULT: {0}'.format(
-                               DEFAULT_LOG_FILE
-                           ))
+    debugging.add_argument(
+        '-l', '--logfile', default=DEFAULT_LOG_FILE,
+        help='Name of log file. DEFAULT: {0}'.format(DEFAULT_LOG_FILE))
 
     # -------------------------------
 
